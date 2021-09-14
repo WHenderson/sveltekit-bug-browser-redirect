@@ -1,2 +1,17 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script context="module">
+    import {browser} from "$app/env";
+
+    export async function load() {
+        if (browser) {
+            // Note there would normally be some condition logic here
+            return {
+                status: 303,
+                redirect: '/redirected',
+            };
+        }
+
+        return {};
+    }
+</script>
+<h1>Woops</h1>
+<p>You should be here. You should have been directed to /redirect!</p>
